@@ -1,0 +1,276 @@
+			
+					~~~~~~~~~~~Working With Django~~~~~~~~~~~~
+
+What is Framework ?
+```````````````````
+	A framework is a platform for developing software applications. It include Code Libraries a compiler and other supporting programs.
+
+Web framework (WF)/ WAF- Web app framework :
+`````````````````````````````````````````````
+	It is a server side application framework. It is designed to support the development of Dynamic websites.
+
+Popular Stacks :
+````````````````
+Django Stack : JavaScript - Python - Django - Any DataBase .
+MERN Stack 	 : JavaScript - MongoDB - Express - ReactJs - NodeJs .
+MEAN Stack 	 : JavaScript - MongoDB - Express - AngularJS - NodeJs .
+
+LAMP Stack	 : JavaScript - Linux - Apache - MySQL - PHP .
+LEMP Stack   : JavaScript - Linux - Nginix - MySQL - PHP .
+
+Python Framework :
+===================
+	Python Frameworks have two types
+
+Micro-Frameworks :
+```````````````````
+	To refer to minimalistic web application frameworks, These are suitable for mainly small applications
+
+	Example: Flask, Bottle, CherryPy
+
+Full-Stack Frameworks:
+```````````````````````
+	These are of two main components
+		1. The Front-End
+		2. The Back-End
+
+The front-end :
+`````````````````
+	It is, what you see/observe as a user on the website. It has the basic technologies like...
+		HTML & HTML5 ; CSS &  CSS3 ; JavaScript ; JQuerry, Angular JS & Angular ; Bootstrap
+
+The Back-end :
+````````````````
+	It is the technology used to actually decide what to show you on the front-end 
+			-The Language (Python) JAVA (Servlets & JSP) PHP ,ASP,ROR
+			-The Framework (Django) JSF, Strutes
+
+Why Django :
+````````````````
+- It is a Python MVT framework. 
+- The WebFramework for perfectionalists with deadlines
+- It Encourages rapid development and clean pragmatic design
+- It is a free open source Full-Stack Python web Framework
+- It makes it easier to build better web apps more quickly and with less code
+
+Who Developed Django :
+```````````````````````
+	Django developed by Adrian Holovaty & Simon Willison. It is maintained by DSF(Django Software Foundation) which maintains its development and release cycle. It is internal project for Lawrence Journal-World newspaper, in 2003. It is dedicated to Famous jazz manouche guitarist Named Django Reinhardt from the 1930s to early 1950s.
+
+Django Design Philosophies :
+`````````````````````````````
+1. Loosely Coupled
+2. Less coading
+3. Don't Repeat yourself (Dry)
+4. Fast Development
+5. Clean Design
+
+Python Web Frameworks :
+========================
+	Django, TurboGears, web2py, CubicWeb, Django-hotsauce, Pylons, Zope, Google App Engine, Cherrypy, Pyramid, Flask, Dash, Bottle, web.py
+
+Django Version History :
+`````````````````````````
+1.0		Sep 2008
+1.5 	Feb 2013
+1.11	April 2017 (LTS)  April2020
+2.0		December 2017	
+2.2 	December 2018 (LTS)  April 2022
+
+
+Django Features :
+`````````````````
+1. Object Relational Mapper-ORM
+2. MVT (Model View Template) Architecture
+3. Rapid Development & Fully Loaded
+4. Secure, SQL injection attacks, Cross site scripting Cross Site Request forgery (CSRF)
+5. Scalable & open Source
+6. Versatile, SmallApps, BigApps, Scientific Apps, organizations, GovApps
+7. LTS (Long term support) & Mobile Friendly.
+8. Simplified URL routing Syntax
+
+other features :
+=================
+1. Excellent Documentation
+2. Python Web-Framework
+3. SEO Optimised
+4. High Scalability
+5. Versatile in Nature
+6. High Security
+7. Thoroughly Tested
+8. Rapid Development
+
+
+Django MVT Architecture :
+==========================
+
+-The MVT is a software design pattern. It is a Collection of three important components Model, View and Template. 
+-The Model helps to handle the database.
+-The template is a presentation layer which handles user interface part completely. 
+-The View is used to execute the business logic and intract with a model to carry data and renders a template.
+
+Difference B/w MVC & MVT :
+===========================
+
+MVC :
+~~~~~~~
+
+Model (M) ==> BackEnd --> Storage ==>Data
+View (V) ==> FrontEnd --> UI ==> Presentation Logic
+Controller (C) ==> MiddleEnd --> Business Logic
+
+
+MVT :
+~~~~~~~
+
+Model (M) ==>BackEnd
+View (V) ==> MiddleEnd --> Coding/Business Logic
+Template (T) ==>FrontEnd --> UI ==> Presentation Logic
+
+
+Control is handled by the Django Framework itself.
+
+
+Django Architecture Picture Flow:
+===================================
+
+											URLS
+		HTTP Request ------------------->
+										  urls.py
+											 |	
+											 |
+											 |
+								forward request to appropriate view
+											 |
+											 |
+											 |	
+
+	Models									View
+				<--------Read/Write---->  				------> HTTP Response (HTML)
+   Models.py							  Views.py
+											 |
+											 |
+											 |
+											 |
+							
+										 Templates
+										(HTML Pages)
+
+
+Web Server (WSGI) :
+~~~~~~~~~~~~~~~~~~~~
+
+	https://wsgi.readthedocs.io
+WSGI is the web server Gateway Interface. It is a Specification that describes how a web server communicates with web applications and how web applications can be chained together to process one request.
+
+Frameworks that run using WSGI
+appier, bobo, Bottle, CherryPy, Django, Falcon, Flask, Pyramid, QWeb, TurboGears.
+
+
+Define PIP :
+`````````````
+	Pip is a package manager for the python programming language
+Syntax :
+	pip list [options]
+Installation :
+	$ python get-pip.py
+
+Upgrading pip:
+===============
+	for windows :- 	$ Python -m pip install -U pip
+
+	for Linux/Unix :- $ pip install -U pip
+
+Some pip commands :
+`````````````````````
+pip list
+pip help
+pip help install
+pip search django
+pip show django
+pip download django
+pip install virtualenv
+pip freeze > requirements.txt
+pip3 install django==2.2
+
+
+
+What is Django project :
+=========================
+
+	It is Collection of applications and configurations that when combined together will make up the full web application or web site
+
+Bank Project :
+	It has the following list of different apps every appperforms particular task
+		==> Bank accounts application
+		==> Fund transfer application
+		==> Transactions application
+		==> Beneficiary application
+
+Note :
+```````
+	Django applications are Reusable and pluggable.
+Ex:	
+````
+	Polling App, News App, Every App provide one or more services to the end user
+
+Most frequently used commands in Django :
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. cd (Change Directory in downwords)
+2. cd .. (Change up a directory)
+3. ls (list files in your current directory)
+4. pwd (prints the present working directory location)
+5. mkdir (make new directory)
+6. rm dir (remove Directory)
+7. chmod (Change mode)
+8. django-admin help <commands>
+9. django-admin makemigrations
+10. django-admin migrate
+11. django-admin runserver
+12. pip freeze > requirements.txt
+....
+
+Django Real Time IDE's :
+==========================
+1. PyCharm
+2. Visual Studio Code
+3. Sublime Text
+4. Atom
+5. Brackets
+
+What is PyCharm ?
+==================
+	It is the best IDE for realtime Python projects. It provides code Analyis a graphical debugger an integrated unit tester and supports web development with Django Framework & other Frameworks with Professional Ed.
+
+Pycharm Comes in Two Editions :
+=================================
+1. Community Edition (Fully-Free)
+2. Professional Edition (Commericial-$199)
+
+How to create a project :
+==========================
+	1. Go to file menu- click on Newproject, Entername of the project Django-"IDFC"
+	2. Select Current window
+	
+Sublime Text :
+```````````````
+	It is a Full Featured text Editor for Editing local files or a code base. It includes Various Features For Editing Code based Which helps developers to keep track of Changes
+
+Brackets :
+```````````
+	It is one of the popular open source text editor you can use for creating and editing codes easily
+Open source for Windows, Linux & Mac OS
+
+
+
+
+
+
+
+
+
+
+
+
+
