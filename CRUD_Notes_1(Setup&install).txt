@@ -1,0 +1,223 @@
+
+Django Setup & Installation :
+===============================
+
+	-first install the Python with the latest version.
+	-for The Django the Python supports 2.5.3 & above versions.
+
+	You can download from the below link :
+
+	https://www.python.org/
+
+Note:
+``````  make sure, while installing in windows Enable/Check the Check box states that "Add Python 3.8.1 to Path".
+
+Check for Python is perfectly installed in System or not ??
+
+In CMD prompt:
+===============
+python --version
+<It displays the Python Version> 
+
+pip --version
+<It displays the pip version like pip 19.1 or pip 20.2>
+
+
+What is PIP ?
+==============
+	- PIP is a package manager for Manage Python Packages, or Modules.
+
+Note:
+``````  If you have Python version 3.4 or later, PIP is included by default.
+
+What is a Package ?
+=====================
+	A Package contains all the files you nedd for a module.
+	Modules are Python code libraries you can include in your project.
+
+Installing PIP:
+=================
+	
+If you do not have PIP installed, you can download and install it from this page: https://pypi.org/project/pip/
+
+Download a Package:
+====================
+
+-Downloading a package is very easy.
+
+-Open the command line interface and tell PIP to download the package you want.
+
+-Navigate your command line & type
+
+	pip install Pillow
+
+This command will install Pillow 6.1.0
+
+How to Find Packages:
+======================
+
+Find more packages at https://pypi.org/.
+
+
+Removing a Package :
+======================
+Use the uninstall command to remove a package:
+
+pip uninstall Pillow
+
+-The PIP Package Manager will ask you to confirm that you want to remove the Pillow package:
+
+-Press y and the package will be removed.
+
+Listing the Packages installed in your System :
+================================================
+
+Use the list command to list all the packages installed on your system:
+
+pip list
+
+--it displays the list of pip packages installed in your system. search for django (it is not found.)
+
+in cmd type :
+django-admin --version
+
+RESULT: 
+````````	it shows Django is not found/ not installed.
+
+Creating a Virtual Environment :
+================================
+
+Navigate to cmd and type :
+> pip install virtualenvwrapper-win
+
+the above cmd will install the virtualenv but not created yet.
+we have to create manually by following commands...
+
+>mkvirtualenv test
+HERE "mkvirtualenv" is command and "test" is the name of the environment.
+
+you can give any name instead of test it's Your choice.
+
+(test) C:\User\varun>
+
+here just before our cmd prompt we find an environment named test...
+Which indicates that, the virtual env is created successfully.
+
+When Ever we want to work on that environment, just go with the cmd called...
+> workon test
+
+Installing Django in VirtualEnv :
+===================================
+
+(test) C:\User\varun> pip install django
+
+this will install the required packages for django and django framework as well.
+
+Note:
+`````	make sure you have installed the following packages with the previous command (django-2.2 , pytz-2019.1 , sqlparse-0.3.0)
+
+
+Now check for Django Version installed in your system
+
+(test) C:\User\varun>django-admin --version
+2.2
+(test) C:\User\varun>
+
+Creating a Django Project :
+===========================
+
+- first create a Empty folder/Directory in your desired location.
+- navigate into that folder 
+
+(test) C:\User\varun>mkdir projects
+(test) C:\User\varun>cd projects
+(test) C:\User\varun\projects>
+
+as of now if U open the same particular folder in GUI it is Empty.
+
+now lets create a Django project.
+
+(test) C:\User\varun\projects>django-admin startproject mywebsite
+
+syntax:
+````````
+{django-admin} -- it is the initial cmd for django framework
+{startproject} -- it will initiate the django project with the name given by the developer.
+{mywebsite} -- it is the django project name, it's your choice to give any name.
+
+Note:
+=====
+
+Makesure the django project name should be related to the website name you are creating.(In companies or in live project).
+
+Now type the below command for listing the source
+(test) C:\User\varun\projects>dir
+here the empty projects folder is filed with a folder called mywebsite, navigate into this folder and again type dir
+(test) C:\User\varun\projects>cd mywebsite
+(test) C:\User\varun\projects\mywebsie>dir
+here you can see the bellow given tree diagram of directories.
+
+there are some files&folders created by the django framework
+
+mywebsite
+	|
+	|-- manage.py
+	|
+	|--mywebsite/
+			|
+			|- __init__.py
+			|
+			|- settings.py
+			|
+			|- urls.py
+			|
+			|- wsgi.py
+
+Description :
+==============
+
+	manage.py − This file is kind of your project local django-admin for interacting with your project via command line (start the development server, sync db...). To get a full list of command accessible via manage.py you can use the code −
+		(test) C:\User\varun> python manage.py help
+
+	mywebsite − This folder is the actual python package of your project. It contains four files −
+		|
+		|	__init__.py − Just for python, treat this folder as package.
+		|
+		|	settings.py − As the name indicates, your project settings.
+		|
+		|	urls.py − All links of your project and the function to call. A kind of ToC of your project.
+		|
+		|	wsgi.py − If you need to deploy your project over WSGI.
+
+
+Run Django Server:
+==================
+
+now type the following command 
+
+(test) C:\User\varun\projects\mywebsie>python manage.py runserver
+
+here you can see the IP address like:
+127.0.0.1:8000
+
+click on that link 
+
+if u see the Rocket Symbol that means Django is installed & working perfectly without any errors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
