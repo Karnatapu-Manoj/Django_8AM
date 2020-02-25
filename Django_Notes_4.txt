@@ -1,0 +1,236 @@
+
+	Django-URL Mapping/URL Dispatcher :
+=========================================
+
+	A Clean Elagant URL scheme is an Important detail in a high-quality web application. Django lets you design URLs however you want, with no framework limitations. To design URLs for an app, You create a python module informally called a URLConf (URL Configuration)
+
+What is URL :
+``````````````
+	It is a web address/ A resource on the internet.
+
+Example:
+`````````
+	http://127.0.0.1:8000
+	http://www.google.com
+
+http:   ===> Transfer protocol, A Common Language between client & server
+s		===> SSL --> Secure socket layer for Encryption
+://		===> URL special Character
+www		===> default domain or subdomain
+. 		===> period or Embedded Character Decoder
+google  ===> primary level domain (PLD)
+.com	===> top level domain Extension (TLP)
+http://104.42.119.168/ ===> direct IP access not allowed
+
+
+
+To customize urls in django, we are having the following three built-in functions:
+	1. path()
+	2. re-path()
+	3. include()
+
+
+
+1. path() :
+`````````````
+	It returns an elemen for inclusion in urlpatterns. It is used to map the URL and Call the specified View.
+
+	Syntax:
+			path(route, view, kwargs = None, Name=None)
+
+	a. The route argument should be a string that contains a URL pattern.
+	b. The View argument is a view function
+	c. The kwargs argument allows you to pass additional argument to the view function or method.
+	d. The name argument allows naming URL patterns
+  Example :
+	passing int value....!
+
+	Step 1 : views.py
+   ~~~~~~~~~~~~~~~~~~~~
+
+	from django.shortcuts import render
+	from django.http import Http Response
+
+	# Create Your Views here :
+	def Home(request, id):
+		 return HttpResponse (f"Welcome to Home Page")
+	def index(request):
+		return HttpResponse("<h1> Welcome to World</h1>")
+	
+Note :
+````````
+	In Python 'f' indicates that these strings are used for formatting strings
+formatted string literal or simply called 'f-sting'.
+
+	Step 2 : urls.py
+   ~~~~~~~~~~~~~~~~~~~
+
+	from django.Contrib import admin
+	from django.urls import admin
+	from Webapp import views
+
+	urlpatterns = [
+			path('admin/', admin.site.urls),
+			path('home/', views.index),
+			path('index/', views.index),
+	]
+
+	Step 3 : run server 
+   ~~~~~~~~~~~~~~~~~~~~~~
+
+$ py manage.py runserver
+		( or )
+$ python manage.py runserver
+
+
+	Step 4 : Send the request to server
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	http://127.0.0.1:8000/home/
+	http://127.0.0.1:8000/index/
+
+Example 2 :
+==============
+
+Step 1 : Views.py
+~~~~~~~~~~~~~~~~~~~
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+#Create your views here:
+
+def Home(request):
+	return HttpResponse("Welcome to home page")
+def index(request):
+	return HttpResponse("<h1>Welcome to world</h1>")
+
+
+Step 2 : urls.py
+~~~~~~~~~~~~~~~~~~
+
+from django.contrib import admin
+from django.urls import admin
+frm Webapp import views
+
+urlpatterns = [
+	path('admin/', admin.site.urls),
+	path('', views.index),
+	path('Index/', views.index),
+]
+
+Step 3 : runServer
+~~~~~~~~~~~~~~~~~~~
+
+	$ python manage.py runserver
+			( or )
+	$ py manage.py runserver
+
+Step 4 : Send the request to server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+
+	http://127.0.0.1:8000
+	http://127.0.0.1:8000/index/
+
+
+
+Path function name attribute :[path()]
+-----------------------------------------
+
+	It alows you to naming URL patterns, these patterns we can able to match in reverse order.
+
+Example :
+``````````
+		Name Attribute.
+
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+
+#create your views here
+
+def Home(request):
+	return HttpResponse("<a href = '/hi'> hellopythonlist </a>")
+def Myview(request):
+	return HttpResponseRedirect(reverse('bye'))
+def byeview(request):
+	return HttpResponse("good bye django group")
+
+Step 2 : urls.py
+~~~~~~~~~~~~~~~~~
+
+from django.contrib import admin
+from django.urls import path
+from Webapp import views
+
+urlpatterns = [
+		path('admin/', admin.site.urls),
+		path('home/', views.home, name='home'),
+		path('hi/',views.Myview, name='hi'),
+		path('bye/', views.byeviews, name='bye'),
+]
+
+Step 3 : RunServer
+~~~~~~~~~~~~~~~~~~~~
+
+	$ python manage.py runserver
+
+Step 4 : Send the request
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	http://127.0.0.1:8000/home
+	http://127.0.0.1:8000/hi
+	http://127.0.0.1:8000/bye
+
+Example 3 : (Keyword attribute)
+````````````````````````````````
+	It allows you to pass additional arguments to the view function or method. It is in dictionary format.
+
+Step.1 : views.py
+```````````````````
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+#Create your views here
+
+def Myview(request, val1, val2):
+		msg = val1 + " " + val2 + "home page"
+		return HttpResponse(msg)
+
+
+Step 2 : urls.py
+``````````````````
+
+	path ('home/', views.Myview, {'val1':'hey','val2':'Welcome'},name='home')
+
+
+Step 3 : RunServer
+`````````````````````
+
+	$ python manage.py runserver
+
+
+Step 4 : Send the request
+````````````````````````````
+
+	http://127.0.0.1:8000/home
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

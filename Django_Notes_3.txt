@@ -1,0 +1,237 @@
+
+Creating and configure Django App :
+`````````````````````````````````````
+
+	A Django App is created to perform a particular functionality for your entire web application
+
+Example:
+`````````
+	Log in App, Registration App, Posting App, FeedBack App
+
+App & Project in Django :
+```````````````````````````
+1. An App is a Web application which is written to perform business logic
+2. A project is a collection of configuration files and apps for a particular website
+3. An app can be in multiple projets
+4. a project can contain multiple apps
+
+Creating an App :
+``````````````````
+		To create an app. we can use following commands
+Synatx:
+	$ django-admin startapp Appname
+	$ python manage.py startapp Appname
+	$ py manage.py startapp appname
+	$ python3 manage.py startapp appname (Linux)
+
+Example :
+``````````
+	$ django-admin startapp webapp
+	$ python manage.py startapp webapp
+	$ py manage.py startapp webapp
+	$ python3 manage.py startapp webapp (Linux)
+	
+WebApp Consist following Structure :
+``````````````````````````````````````
+Web App Architecture :
+````````````````````````
+
+webapp/
+   |--  __init__.py
+   |--  admin.py
+   |--  apps.py
+   |--  migrations/
+            |--  __init__.py
+   |		
+   |--  models.py
+   |--  tests.py
+   |--  { urls.py }
+   |--  views.py
+
+
+	__init__.py :
+
+			It is an Empty file that tells to python that this directory should be considered as a python package
+
+	admin.py :
+	
+			you may register your models here which use them with django's admin interface.
+
+	apps.py :
+
+			Here you can place application apecific configuration
+
+	models.py :
+
+			We define our database models, which django automatically transfer into database tables
+
+	tests.py :
+		
+			Here we can store test functions to test your code
+
+	Views.py :
+	
+			Here we handle the request/response logic for our website.
+
+	migrations :
+
+			This directory stores database specific information as it relation to the models.
+
+
+
+
+Total Project Structure :
+============================
+
+mysite/
+   | manage.py
+   | mysite/
+       | __init__.py
+       | settings.py
+       | urls.py
+       | asgi.py
+       | wsgi.py
+
+   | webapp/
+	   |--  __init__.py
+	   |--  admin.py
+	   |--  apps.py
+	   |--  migrations/
+			   |--  __init__.py
+	   |
+	   |--  models.py
+	   |--  tests.py
+	   |--  urls.py
+	   |--  views.py
+
+   | db.sqlite3
+
+
+Configuring App in Project :// settings.py :
+================================================
+
+Go to Installed apps at the End or Start, provide recently created
+
+	Example:
+		# user defined Apps
+		'webapp'
+
+How URLs and Views Work ?
+============================
+
+URLs : This python Script that will store all URLpatterns for your project.
+
+Views : A View is a place where we put our business logic of application.
+
+			The following diagram describes the working structure for urls and views.
+
+
+
+									URLs and Views
+
+										Views.py
+									/				\
+								   /				 \	
+						response  /					  \
+								 /					   \
+								/						\
+
+						browser	----------->----------- URLs.py
+
+								    request to / about			
+
+
+Projects :
+
+Example 1:
+``````````
+
+Step-1 : Views.py
+====================
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# create your views here :
+
+def Home_page(request):
+	return HttpResponce("Hey Welcome to Django project")
+
+step-2 : urls.py
+==================
+from django.contrib import admin
+from django.urls import path
+from webapp import views
+
+urlpatterns = [
+	path('admin/', admin.site.urls),
+	path('home/', views.Home_page),
+]
+
+
+step-3 : Run the Server
+=========================
+
+	$ python manage.py runserver
+
+step-4 : check the server
+============================
+
+	open web browser, send the request to server:
+			http://127.0.0.1:8000/home
+
+
+Example 2:
+``````````
+Step-1 : Views.py
+====================
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# create your views here :
+
+def Home_page(request):
+	return HttpResponse("Hey Welcome to Django project")
+
+def SuccessSite(request):
+	return HttpResponse("<h1 style = 'color:red;Font-family:tahoma; Font-size:100px'> Welcome to SuccessSite page.... !!! </h1>")
+
+
+step-2 : urls.py
+==================
+from django.contrib import admin
+from django.urls import path
+from webapp import views
+
+urlpatterns = [
+	path('admin/', admin.site.urls),
+	path('home/', views.Home_page),
+	path('success/',views.SuccessSite),
+]
+
+
+step-3 : Run the Server
+=========================
+
+	$ python manage.py runserver
+
+step-4 : check the server
+============================
+
+	open web browser, send the request to server:
+			http://127.0.0.1:8000/home
+			http://127.0.0.1:8000/success
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

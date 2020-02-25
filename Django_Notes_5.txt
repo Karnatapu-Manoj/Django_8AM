@@ -1,0 +1,163 @@
+2. re-path() :
+```````````````
+	It returns an element, that contains regular expression
+
+	Syntax :
+		re_path(route, view, kwargs=None,name=Nome)
+	
+	a. The route argument should be a string, that contains regular expression, compatible with	     		   python's remodule.
+	b. The view , kwargs and name arguments are the same as for path()
+
+Step 1 : views.py
+```````````````````
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+#Create your Views here
+
+def Home_page(request):
+	return HttpResponse("Welcome to Home page")
+def Index_page(request):
+	return HttpResponse("Welcome to Index page")
+
+Step 2 : urls.py
+``````````````````
+
+from django.contrib import admin
+from django.urls import path, re_path
+from Webapp import views
+
+urlpatterns = [
+		path('admin/', admin.site.urls),
+		path(r'^home/$', views.Home_page),
+		path(r'^index/$', views.Index_page),
+
+]
+
+Step 3 : RunServer
+`````````````````````
+
+	$ python manage.py runserver
+
+Step 4 : Send the Request
+```````````````````````````
+	http://127.0.0.1:8000/home/
+	htpp://127.0.0.1:8000/Index/
+
+Example 2 :
+````````````
+Using python regular Expressions 
+==================================
+
+Step 1 : views.py
+```````````````````
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+#Create your Views here
+
+def Home_page(request):
+	return HttpResponse("Welcome to Django Home page")
+def Index_page(request):
+	return HttpResponse("Welcome to Index year page {year}")
+
+Step 2 : urls.py
+``````````````````
+
+from django.contrib import admin
+from django.urls import path, re_path
+from Webapp import views
+
+urlpatterns = [
+		path('admin/', admin.site.urls),
+		re_path(r'^home/$', views.Home_page),
+		re_path(r'^index/(?P<year>[0-9]{4})/$', views.Index_page),
+
+]
+
+Step 3 : RunServer
+`````````````````````
+
+	$ python manage.py runserver
+
+Step 4 : Send the Request
+```````````````````````````
+	http://127.0.0.1:8000/home/
+	htpp://127.0.0.1:8000/index/1999
+
+
+
+3. Include() :
+````````````````
+	A function that takes a full python import path to another URL Conf module that should be "include" in this place
+
+Syntax :
+`````````
+	include(module, namespace=None)
+			( or )
+	include(pattern_list)
+
+parameters :
+`````````````
+module 			===> url conf module (or module name)
+namespace(str)	===> instance namespace for the url Entires being included
+
+pattern_list	===> Iterable of path() and/or re_path() instances
+
+Step 1 : create urls.py Webapp level
+```````````````````````````````````````
+
+from django.urls.import path
+from Webapp import views
+
+urlpatterns = [
+		path('index/', views.index),
+]
+
+Step 2 : include this urls.py into Root(project) Config.urls
+```````````````````````````````````````````````````````````````
+
+from django.urls import path, include
+urlpatterns = [
+		path('Webapp/', include('Webapp.urls')),
+]
+
+
+Step 3 : RunServer
+`````````````````````
+	$ Python manage.py runserver
+
+Step 4 : Send the Web Request
+```````````````````````````````
+
+open any web browser and Enter the URL
+
+	http://127.0.0.1:8000/Webapp/index
+
+
+Advantages :
+~~~~~~~~~~~~~~
+
+	URLpatterns at App level instead of projectlevel
+1. It promotes reusability of Django applications across multiple projects
+2. project level urls.py file will be clean and more readable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
