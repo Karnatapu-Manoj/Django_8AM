@@ -1,0 +1,160 @@
+
+CRUD Creation Part in Django :
+================================
+
+- create a "static" & "templates" folder inside an app{app_name}
+
+- Copy the given static files (assets, Fonts, Images) then paste in the static Directory
+
+- Copy the given HTML files(index.html,Home.html,..etc) then paste i into templates Directory.
+
+
+Settings.py :
+~~~~~~~~~~~~~~~~~~
+
+- Add the appname into the installed_apps
+
+	INSTALLED_APPS = [
+			'django.contrib.admin',
+			'appname',
+	]
+
+- Include the templates directory as
+	TEMPLATES = [
+		'DIRS' : ['templates']
+	]
+
+- To display the given html as home page of our project/website then follow the given steps below
+
+
+
+Views.py
+~~~~~~~~~~~~~~~~~
+
+ From django.shortcuts import render
+
+ def Home(request):
+		return render(request,'home.html')
+
+Urls.py 
+~~~~~~~~~~~~~~~~~~
+
+	From appname import views
+
+	urlpatterns = [
+			
+			path('admin/', admin.site.urls),	
+			path('', views.Home, name='home'),
+	]
+
+
+- Open the terminal and then Run the Server by using following commands.
+
+	$ python manage.py runserver
+
+	open server @ http://127.0.0.1:8000/
+
+- Click on the above link for getting the designed homepage.
+
+- After that go to home.html then apply the static for all assets,fonts,images
+
+<html>
+{% load static %}
+<head>
+	<link href ="{% static 'assets/bootstrap/..../.css' %}">
+	<img src="{% static 'images/logo.png' %}">
+</head>
+</html>
+
+
+- Enter the data in the webpage then save it on Database by using following steps
+
+- go to 'home.html'
+
+<body>
+<form action="{% url 'manoj' %}" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+apply all the html name tags & placeholder tags & do the required edits in the html file'(s).
+
+
+
+Models.py
+~~~~~~~~~~~~~~~
+
+
+	class Data(models.Model):
+			name1 = models.CharField(max_length=20)
+			gender1=models.CharField(max_length=20)
+			email1=models.EmailField()
+			phone1=models.IntegerField()
+			dob1=models.DateField()
+			password1=models.CharField(max_length=20)
+			Pic1=models.FileField(upload_to='media')
+
+	
+	def __str__(self):
+			return self.name1
+
+--> if we r using FileField for images/files then only follow the below steps
+
+	Goto project/settings.py
+
+	At the bottom of the settings.py below the STATIC_URL add these below commands.
+
+	STATIC_URL = '/static/'
+	MEDIA_URL = '/media/'
+	MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+After that, go to URLs.py and add at the end of the urlpatterns list as follows.
+
+
+Appname/urls.py
+~~~~~~~~~~~~~~~~~~~~
+
+	from django.conf import settings
+	from django.conf.urls.static import static
+	
+	urlpatterns =[
+		
+			--------
+			......
+			...
+
+	]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+Admin.py
+~~~~~~~~~~~~~~~~
+
+	from .models import Data
+	
+	admin.site.register(Data)
+
+Views.py
+~~~~~~~~~~~~~~
+
+	go to views.py and add the save function to save the data in the django database
+
+	from .models import Data
+	
+	def sav(request):
+		name2 = request.post.get('name')
+		...   = ....   . ..  . ... ('HTML-NameTag')
+		pics2 = request.FILES.get('uploadpic')
+
+	aa = Data(name1=name2, gender1=gender2,....... , pics1=pics2)
+
+	aa.save()
+	return render(request, 'creat_job.html')
+
+
+
+--> go to urls.py to write url path for save function
+
+	urlpatterns = [
+		
+			path('save1/', views.sav, name='manoj'),
+	]
+
