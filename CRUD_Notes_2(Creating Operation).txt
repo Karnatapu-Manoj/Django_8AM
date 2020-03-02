@@ -72,7 +72,7 @@ Urls.py
 - go to 'home.html'
 
 <body>
-<form action="{% url 'manoj' %}" method="POST" enctype="multipart/form-data">
+<form class="c-form" action="{% url 'manoj' %}" method="POST" enctype="multipart/form-data">
 	{% csrf_token %}
 apply all the html name tags & placeholder tags & do the required edits in the html file'(s).
 
@@ -105,6 +105,10 @@ Models.py
 	MEDIA_URL = '/media/'
 	MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+- After the required changes made in the settings, make sure u have installed Pillow package in your systems.
+
+	--> in terminal $ pip install pillow
 
 
 After that, go to URLs.py and add at the end of the urlpatterns list as follows.
@@ -140,11 +144,13 @@ Views.py
 	from .models import Data
 	
 	def sav(request):
-		name2 = request.post.get('name')
+		name2 = request.POST.get('name')
 		...   = ....   . ..  . ... ('HTML-NameTag')
 		pics2 = request.FILES.get('uploadpic')
 
-	aa = Data(name1=name2, gender1=gender2,....... , pics1=pics2)
+	aa = Data(name1=name2,
+			  gender1=gender2,....... , pics1=pics2
+			 )
 
 	aa.save()
 	return render(request, 'creat_job.html')

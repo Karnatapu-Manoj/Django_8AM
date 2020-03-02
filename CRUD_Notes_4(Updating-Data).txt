@@ -1,0 +1,82 @@
+
+
+CRUD -- Updating the Data Which is inside the DataBase
+===========================================================
+
+	Till now we have successfully seen the practical observation on CRUD operations of both creating & retriveing.
+
+	Now we will see how to work on Upating part of CRUD.
+
+
+For updating the databse of the data which we have worked on we go with the following setps.
+
+
+Views.py
+~~~~~~~~~~~~~
+
+	def edit(request, id):
+			dev=Data.objects.get(id=id)
+			return render(request, 'create_job.html', {'aa':dev})
+
+
+urls.py
+~~~~~~~~~~~~~
+
+	urlpatterns =[
+		
+		path('retrivew/<int:id>/', views.edit, name='Data'),
+	]
+
+
+
+File.html
+~~~~~~~~~~~~~~~~~~~
+
+	in file.html page add the edit button in the table-row <tr> of Table-data <td> as follows
+	
+
+	<td><a href="{% url 'Data' x.id %}">edit</a></td>
+
+
+Create_job.html
+~~~~~~~~~~~~~~~~~~~~~~
+
+	In the main home page of create_job.html file 
+add value tag just after the name tag of each field of form action as follows
+
+	name="Job_title" value="{{aa.job-Title1}}"
+	
+syntax:
+		value="{{aa.modelsname}}"
+
+aa is the save function variable name. aa--> where you stored the data in the views.py
+
+model name is the name given to the particular field model name
+
+
+
+
+Note :
+==========
+
+
+	for drop-Downs & Radio-Buttons
+
+		<option value = "Hardware" {% if aa.category == "Hardware" %}selected{% endif %}>
+
+
+	for images & files
+
+
+		<input .... multiple/>
+		<div>
+			<img src="{{aa.companylogo.url}}" height="30" width="30" class= img-responsive>
+		</div>
+
+
+
+we need to add the below lines if there is no spcae to display if we have the display preview we will include the code into it.
+
+
+
+

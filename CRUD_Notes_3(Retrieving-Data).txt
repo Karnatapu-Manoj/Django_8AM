@@ -1,0 +1,66 @@
+
+
+CRUD -- Retriveing The Data from the Data-Base.
+==================================================
+
+In order to retrieve the date and present in the desired place of html, we don't have the required place of viewing as per the given project. So we are creating a new html page to show the retrieved data in that HTML page which we have created.
+
+
+- Create a new html file (file.html) in Templates
+
+- goto Views.py Where save function is cretead for Creation operation of CRUD (def sav)
+
+add new Function:
+
+	def retrive(request):
+			jk = Data.object.all()
+			return render(request, 'file.html', {'mkn':jk})
+
+Urls.py
+~~~~~~~~~~~~
+
+add path to that view function 
+
+	urlpatterns =[
+
+		path('hii', views.retrive, name='helloo'),
+	]
+
+
+go to the New Html File(file.html) and type the basic tabluar format using html
+
+	<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<th>job_title</th>
+				<th>Category</th><th>No.of.Vacancies</th>
+				......
+				.....
+			</tr>
+			{% for x in mkn %}
+			<tr>
+				<td>{{x.jobtitle}}</td>
+				<td>{{x.modelname}}</td>
+				<td>{{x.modelname}}</td>
+				......
+			</tr>
+			{% endfor %}
+	</body>
+	</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
